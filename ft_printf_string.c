@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+//%s
+
 int	ft_printf_string(char *s)
 {
 	if (!s)
