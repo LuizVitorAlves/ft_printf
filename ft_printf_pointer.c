@@ -15,6 +15,6 @@ int ft_printf_pointer(void *ptr)
         write(1, "(nil)", 5);
         return (count + 5);  // Retorna a contagem total incluindo "(nil)"
     }
-    count += ft_printf_hex(address, 0);  // Imprime o valor em hexadecimal minúsculo
+    count += ft_printf_hexlow(address, 0);  // Imprime o valor em hexadecimal minúsculo
     return (count);
 }
