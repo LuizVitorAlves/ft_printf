@@ -1,8 +1,8 @@
 #include "ft_printf.h"
 
-//%x
+//%X
 
-static int ft_puthex_upper(unsigned int num)
+static int ft_printf_hexupp(unsigned int num)
 {
     char *base = "0123456789ABCDEF";  // Para hexadecimal maiúsculo
     int count;
