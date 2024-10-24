@@ -2,7 +2,7 @@
 
 //%X
 
-static int ft_printf_hexupp(unsigned int num)
+int ft_printf_hexupp(unsigned int num)
 {
     char *base = "0123456789ABCDEF";  // Para hexadecimal maiúsculo
     int count;
