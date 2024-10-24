@@ -2,20 +2,19 @@
 
 //%p
 // Função que imprime um ponteiro no formato hexadecimal
-int	ft_printf_pointer(unsigned long nb)
+int ft_putptr(void *ptr)
 {
-	int	size;
+    unsigned long long address;
+    int count;
 
-	if (nb == 0)
-	{
-		ft_putstr_fd("(nil)", 1);  // Se o ponteiro for nulo, imprime "(nil)"
-		return (5);                // Retorna 5, o número de caracteres de "(nil)"
-	}
-	else
-	{
-		size = 2;  // "0x" ocupa 2 caracteres
-		ft_putstr_fd("0x", 1);  // Imprime o prefixo "0x"
-		size += ft_printf_bighex(nb);  // Imprime o número em hexadecimal
-	}
-	return (size);  // Retorna o tamanho total da saída
+    address = (unsigned long long)ptr;
+    write(1, "0x", 2);  // Prefixo para ponteiros
+    count = 2;  // Conta os dois caracteres do prefixo
+    if (address == 0)
+    {
+        write(1, "(nil)", 5);
+        return (count + 5);  // Retorna a contagem total incluindo "(nil)"
+    }
+    count += ft_puthex(address, 0);  // Imprime o valor em hexadecimal minúsculo
+    return (count);
 }
