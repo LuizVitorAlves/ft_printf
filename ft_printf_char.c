@@ -1,8 +1,9 @@
 #include "ft_printf.h"
 
 //%c
-
-int  ft_printf_char(char c)
+// Função para imprimir um caractere
+int	ft_printf_char(char c)
 {
-  return (ft_putchar_fd(c, 1));  // Retorna o valor retornado por ft_putchar_fd
+	ft_putchar_fd(c, 1);  // Imprime o caractere na saída padrão
+	return (1);           // Retorna 1, pois um caractere foi impresso
 }
