@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_unbr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lalves-d <lalves-d@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 12:13:43 by lalves-d          #+#    #+#             */
+/*   Updated: 2024/10/24 12:40:36 by lalves-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 //%u
-// Função que conta o número de dígitos em um número unsigned
+//Function that counts the number of digits in an unsigned number
 static int	get_unsigned_num_size(unsigned int nb)
 {
 	int	count;
 
 	count = 0;
 	if (nb == 0)
-		return (1);  // O número 0 tem 1 dígito
+		return (1);
 	while (nb != 0)
 	{
 		nb = nb / 10;
@@ -17,28 +29,27 @@ static int	get_unsigned_num_size(unsigned int nb)
 	return (count);
 }
 
-// Função que imprime um número unsigned de forma recursiva
+//Function that prints an unsigned number recursively
 static void	ft_positive_putunbr(unsigned int n)
 {
 	if (n <= 9)
 	{
-		n = n + '0';  // Converte para caractere
-		ft_putchar_fd(n, 1);  // Imprime o caractere
+		n = n + '0';
+		ft_putchar_fd(n, 1);
 	}
 	else
 	{
-		ft_positive_putunbr(n / 10);  // Imprime a parte superior
-		ft_positive_putunbr(n % 10);  // Imprime a parte inferior
+		ft_positive_putunbr(n / 10);
+		ft_positive_putunbr(n % 10);
 	}
 }
 
-// Função principal que imprime um número unsigned e retorna a contagem de dígitos
+//Main function that prints an unsigned number and returns the count of digits
 int	ft_printf_unbr(unsigned int nb)
 {
 	if (nb == 0)
-		ft_putchar_fd('0', 1);  // Lida com o caso em que o número é 0
+		ft_putchar_fd('0', 1);
 	else
-		ft_positive_putunbr(nb);  // Chama a função recursiva para imprimir
-
-	return (get_unsigned_num_size(nb));  // Retorna o número de dígitos impressos
+		ft_positive_putunbr(nb);
+	return (get_unsigned_num_size(nb));
 }

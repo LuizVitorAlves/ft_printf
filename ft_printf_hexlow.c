@@ -1,15 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_hexlow.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lalves-d <lalves-d@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 11:27:08 by lalves-d          #+#    #+#             */
+/*   Updated: 2024/10/24 11:35:12 by lalves-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 //%x
-int ft_printf_hexlow(unsigned int num)
-{
-    char *base = "0123456789abcdef";  // Para hexadecimal minúsculo
-    int count;
+//Convert a number to a lowercase hexadecimal
 
-    if (num >= 16)
-    {
-        count = ft_puthex_lower(num / 16) + write(1, &base[num % 16], 1);
-        return (count);
-    }
-    return (write(1, &base[num], 1));  // Escreve o dígito correspondente
+int	ft_printf_hexlow(unsigned int num)
+{
+	char	*base;
+	int		count;
+
+	base = "0123456789abcdef";
+	if (num >= 16)
+	{
+		count = ft_printf_hexlow(num / 16) + write(1, &base[num % 16], 1);
+		return (count);
+	}
+	return (write(1, &base[num], 1));
 }

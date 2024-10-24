@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_hexupp.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lalves-d <lalves-d@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 11:37:25 by lalves-d          #+#    #+#             */
+/*   Updated: 2024/10/24 11:57:17 by lalves-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 //%X
+//Convert a number to a uppercase hexadecimal
 
-int ft_printf_hexupp(unsigned int num)
+int	ft_printf_hexupp(unsigned int num)
 {
-    char *base = "0123456789ABCDEF";  // Para hexadecimal maiúsculo
-    int count;
+	char	*base;
+	int		count;
 
-    if (num >= 16)  // Se o número é maior ou igual a 16
-    {
-        // Chama recursivamente para dividir o número e escreve o dígito atual
-        count = ft_puthex_upper(num / 16) + write(1, &base[num % 16], 1);
-        return (count);  // Retorna o total de caracteres escritos
-    }
-    // Caso base: quando o número é menor que 16
-    return (write(1, &base[num], 1));  // Escreve o dígito correspondente
+	base = "0123456789ABCDEF";
+	if (num >= 16)
+	{
+		count = ft_printf_hexupp(num / 16) + write(1, &base[num % 16], 1);
+		return (count);
+	}
+	return (write(1, &base[num], 1));
 }

@@ -1,19 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_nbr.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lalves-d <lalves-d@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/24 11:58:02 by lalves-d          #+#    #+#             */
+/*   Updated: 2024/10/24 13:59:34 by lalves-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 //%d e %i
-//Imprime um número inteiro decimal
+//Print an integer decimal number
 
-int ft_printf_nbr(int n)
+static int	get_size(int nb)
 {
-    char *num_str;
-    int count;
+	int	count;
 
-    num_str = ft_itoa(n);  // Converte o número para string usando ft_itoa da libft
-    if (num_str == NULL)
-    {
-        return (0);
-    }
-    count = ft_putstr(num_str);  // Imprime a string do número
-    free(num_str);  // Libera a memória alocada por ft_itoa
-    return (count);
+	count = 0;
+	if (nb == -2147483648)
+		return (11);
+	if (nb < 0)
+	{
+		count++;
+		nb *= -1;
+	}
+	while (nb != 0)
+	{
+		nb = nb / 10;
+		count++;
+	}
+	return (count);
+}
+
+int	ft_printf_nbr(int nb)
+{
+	ft_putnbr_fd(nb, 1);
+	if (nb == 0)
+		return (1);
+	return (get_size(nb));
 }
