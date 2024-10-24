@@ -1,4 +1,7 @@
-static int ft_puthex_lower(unsigned int num)
+#include "ft_printf.h"
+
+//%x
+int ft_printf_hexlow(unsigned int num)
 {
     char *base = "0123456789abcdef";  // Para hexadecimal minúsculo
     int count;
