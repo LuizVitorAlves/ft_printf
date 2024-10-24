@@ -1,5 +1,7 @@
 #include "ft_printf.h"
 
+//%p
+
 // Função auxiliar para imprimir uma string de trás para frente
 static void	ft_rprint(char *s)
 {
