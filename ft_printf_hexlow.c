@@ -14,17 +14,17 @@
 
 //%x
 //Convert a number to a lowercase hexadecimal
-
-int	ft_printf_hexlow(unsigned int num)
+int	ft_printf_hexlow(unsigned long long num)
 {
 	char	*base;
 	int		count;
 
 	base = "0123456789abcdef";
+	count = 0;
 	if (num >= 16)
 	{
-		count = ft_printf_hexlow(num / 16) + write(1, &base[num % 16], 1);
-		return (count);
+		count += ft_printf_hexlow(num / 16);
 	}
-	return (write(1, &base[num], 1));
+	count += write(1, &base[num % 16], 1);
+	return (count);
 }
